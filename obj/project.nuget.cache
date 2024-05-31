@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AZ7ytINWHzfXd1EoVYuYK6aSjfRb1yEY/t4s5etA81cfWAhyNWVCyCAG8ZVg59fBpZekZmybp1RS2f8LmH1PKA==",
+  "dgSpecHash": "Z622Rxhr7fnKYvuUkWgYiCr7WKaQCvg88dyqkTwICTHwIsiwmH8Zo2JeMbeNz+IoaoQaZAniGW/VUjvBQ5Vgog==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hbrsk\\dotnet-code\\DotnetAPI\\DotnetAPI.csproj",
+  "projectFilePath": "C:\\Users\\hbrsk\\dotnet-code\\dotnetapi\\DotnetAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hbrsk\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.5\\microsoft.aspnetcore.openapi.8.0.5.nupkg.sha512",
     "C:\\Users\\hbrsk\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
