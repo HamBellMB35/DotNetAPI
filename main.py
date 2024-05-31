@@ -1,0 +1,1 @@
+print("Your Github Repo has been set up succesfully")
