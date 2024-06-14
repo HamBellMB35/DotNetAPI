@@ -1,3 +1,4 @@
+using System.Collections;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
@@ -22,7 +23,47 @@ public class UserController : ControllerBase
         return _dapper.LoadDataSingle<DateTime>("SELECT GETDATE()");
     }
 
-    [HttpGet("GetUsers/{testValue}")]
+    [HttpGet("GetUsers")]
+    //public IActionResult Test()
+    public IEnumerable<User> GetUsers()
+    {
+        string sql = @"
+        SELECT [UserId],
+            [FirstName],
+            [LastName],
+            [Email],
+            [Gender],
+            [Active] 
+        FROM App3Schema.Users";
+
+        IEnumerable<User> users = _dapper.LoadData<User>(sql);
+        
+        return users;
+    }
+
+
+
+     [HttpGet("GetSingleUsers/{userId}")]
+    //public IActionResult Test()
+    public User GetSingleUsers(int userId)
+    {
+        string sql = @"
+        SELECT [UserId],
+            [FirstName],
+            [LastName],
+            [Email],
+            [Gender],
+            [Active] 
+        FROM App3Schema.Users
+            WHERE UserId = " + userId.ToString();
+
+        User user = _dapper.LoadDataSingle<User>(sql);
+        
+        return user;
+
+    }
+
+     [HttpGet("GetUsers/{testValue}")]
     //public IActionResult Test()
     public string[] GetUsers(string testValue)
     {
