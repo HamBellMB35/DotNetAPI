@@ -42,7 +42,6 @@ public class UserController : ControllerBase
     }
 
 
-
      [HttpGet("GetSingleUsers/{userId}")]
     //public IActionResult Test()
     public User GetSingleUsers(int userId)
@@ -60,8 +59,8 @@ public class UserController : ControllerBase
         User user = _dapper.LoadDataSingle<User>(sql);
         
         return user;
-
     }
+
 
      [HttpGet("GetUsers/{testValue}")]
     //public IActionResult Test()
@@ -75,8 +74,56 @@ public class UserController : ControllerBase
         };
 
         return responseArray;
-
     }
 
+
+    [HttpPut("EditUser")]
+    public IActionResult EditUser(User user)
+    {
+       string sql = @"
+        UPDATE App3Schema.Users
+            SET [FirstName] = '" + user.FirstName +
+                 "',[LastName] = '" + user.LastName + 
+                "', [Email] = '" + user.Email +
+                "', [Gender] = '" + user.Gender +
+                "', [Active] = '" + user.Active +
+            "' WHERE UserId = " + user.UserId;
+        Console.WriteLine(sql);
+        
+        if(_dapper.ExecuteSql(sql))
+        {
+            return Ok();
+        }
+
+        throw new Exception("Failed to update user");
+    }
+
+
+    [HttpPost("AddUser")]
+    public IActionResult AddUser(User user)
+    {
+        string sql = @"INSERT INTO App3Schema.Users(
+                [FirstName],
+                [LastName],
+                [Email],
+                [Gender],
+                [Active]
+            ) VALUES (" +
+               "'" + user.FirstName +
+                "', '" + user.LastName + 
+                "', '" + user.Email +
+                "', '" + user.Gender +
+                "', '" + user.Active +
+            "')";
+
+        Console.WriteLine(sql);
+        
+        if(_dapper.ExecuteSql(sql))
+        {
+            return Ok();
+        }
+
+        throw new Exception("Failed to add user");
+    }
 }
 
